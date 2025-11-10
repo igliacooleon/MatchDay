@@ -1,0 +1,25 @@
+{
+  "name": "matchday",
+  "version": "1.0.0",
+  "description": "Privacy-preserving football prediction platform with FHE encryption",
+  "scripts": {
+    "compile": "npx hardhat compile",
+    "deploy": "npx hardhat run scripts/deploy.cjs --network sepolia",
+    "test": "npx hardhat test"
+  },
+  "keywords": ["fhe", "zama", "blockchain", "privacy"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@fhevm/hardhat-plugin": "0.3.0-1",
+    "@fhevm/mock-utils": "0.3.0-1",
+    "@nomicfoundation/hardhat-ethers": "^3.0.0",
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "hardhat": "^2.19.4"
+  },
+  "dependencies": {
+    "@fhevm/solidity": "^0.9.1",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.0"
+  }
+}
