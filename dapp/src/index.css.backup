@@ -1,0 +1,214 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Sports Betting DApp Design System */
+
+@layer base {
+  :root {
+    /* Stadium Night Theme */
+    --background: 210 100% 6%; /* Deep Blue #0A1F44 -> converted to HSL */
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 100% 6%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 100% 6%;
+
+    /* Neon Cyan Primary */
+    --primary: 190 100% 50%; /* #00D9FF */
+    --primary-foreground: 210 100% 6%;
+
+    /* Fluorescent Green */
+    --secondary: 110 100% 56%; /* #39FF14 */
+    --secondary-foreground: 210 100% 6%;
+
+    /* Muted Glass Effect */
+    --muted: 0 0% 96%;
+    --muted-foreground: 210 10% 45%;
+
+    /* Fluorescent Yellow */
+    --accent: 52 100% 65%; /* #FFED4E */
+    --accent-foreground: 210 100% 6%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 190 100% 50%;
+    --input: 0 0% 90%;
+    --ring: 190 100% 50%;
+
+    --radius: 1rem;
+
+    /* Custom Sports Theme Colors */
+    --grass-green: 160 60% 20%; /* #1B4D3E */
+    --neon-glow: 190 100% 70%;
+    --stadium-dark: 210 100% 10%;
+    --glass-bg: 0 0% 98%;
+    --glass-border: 190 100% 50%;
+
+    /* Gradients */
+    --gradient-stadium: linear-gradient(135deg, hsl(210, 100%, 6%) 0%, hsl(160, 60%, 20%) 100%);
+    --gradient-card: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    --gradient-neon: linear-gradient(135deg, hsl(190, 100%, 50%) 0%, hsl(110, 100%, 56%) 100%);
+    
+    /* Shadows & Glows */
+    --shadow-neon: 0 0 20px hsl(190 100% 50% / 0.5), 0 0 40px hsl(190 100% 50% / 0.2);
+    --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.37);
+    --glow-green: 0 0 20px hsl(110 100% 56% / 0.6);
+    --glow-yellow: 0 0 15px hsl(52 100% 65% / 0.5);
+
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .dark {
+    --background: 210 100% 6%;
+    --foreground: 0 0% 98%;
+    --card: 210 100% 10%;
+    --card-foreground: 0 0% 98%;
+    --popover: 210 100% 10%;
+    --popover-foreground: 0 0% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-oswald;
+  }
+}
+
+@layer utilities {
+  /* Glass Morphism Effect */
+  .glass {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .glass-strong {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 2px solid rgba(0, 217, 255, 0.3);
+  }
+
+  /* Neon Effects */
+  .neon-border {
+    border: 2px solid hsl(var(--primary));
+    box-shadow: var(--shadow-neon);
+  }
+
+  .neon-text {
+    color: hsl(var(--primary));
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.8),
+                 0 0 20px hsl(var(--primary) / 0.5),
+                 0 0 30px hsl(var(--primary) / 0.3);
+  }
+
+  .glow-green {
+    box-shadow: var(--glow-green);
+  }
+
+  .glow-yellow {
+    box-shadow: var(--glow-yellow);
+  }
+
+  /* Stadium Background */
+  .stadium-bg {
+    background: var(--gradient-stadium);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Grass Pattern Overlay */
+  .grass-pattern {
+    background-image: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(57, 255, 20, 0.03) 2px,
+        rgba(57, 255, 20, 0.03) 4px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        rgba(57, 255, 20, 0.03) 2px,
+        rgba(57, 255, 20, 0.03) 4px
+      );
+  }
+
+  /* Score Typography */
+  .score-text {
+    @apply font-oswald font-bold;
+    font-feature-settings: "tnum" 1;
+    letter-spacing: -0.02em;
+  }
+
+  /* Hover Lift Effect */
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card), var(--shadow-neon);
+  }
+
+  /* Pulse Animation for Live Matches */
+  .live-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+}
+
+  /* Spotlight Sweep Animation */
+  .animate-spotlight-sweep {
+    animation: spotlight-sweep 15s ease-in-out infinite;
+  }
+
+  @keyframes spotlight-sweep {
+    0%, 100% {
+      transform: rotate(-3deg);
+    }
+    50% {
+      transform: rotate(3deg);
+    }
+  }
+
+  /* Glow Pulse Animation */
+  .animate-glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% {
+      filter: drop-shadow(0 0 4px hsl(52 100% 65% / 0.8));
+    }
+    50% {
+      filter: drop-shadow(0 0 12px hsl(52 100% 65% / 1));
+    }
+  }
+}
